@@ -18,7 +18,7 @@ export function DemoPage() {
       <section className="demo-hero section-border">
         <div className="container">
           <RouteLink href="/" className="back-link"><ArrowLeft size={15} /> Back to overview</RouteLink>
-          <Badge>{demo.eyebrow}</Badge>
+          <Badge>{demo.label}</Badge>
           <h1>{demo.title}</h1>
           <p>{demo.description}</p>
         </div>
@@ -34,9 +34,9 @@ export function DemoPage() {
         </div>
       </section>
 
-      <section className="contact-section">
+      {landingPage.showSections.contact && <section className="contact-section">
         <div className="container contact-grid">
-          <div><Badge>{contact.eyebrow}</Badge><h2>{contact.title}</h2><p>{contact.description}</p></div>
+          <div><Badge>{contact.label}</Badge><h2>{contact.title}</h2><p>{contact.description}</p></div>
           <form className="contact-form" action={contact.form.action} method={contact.form.method ?? 'post'} onSubmit={handleSubmit}>
             <label>{contact.form.nameLabel}<input name="name" placeholder={contact.form.namePlaceholder} required /></label>
             <label>{contact.form.emailLabel}<input name="email" type="email" placeholder={contact.form.emailPlaceholder} required /></label>
@@ -44,7 +44,7 @@ export function DemoPage() {
             <Button type="submit">{contact.form.submitLabel} <ArrowRight size={15} /></Button>
           </form>
         </div>
-      </section>
+      </section>}
     </div>
   );
 }

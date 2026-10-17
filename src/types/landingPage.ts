@@ -44,7 +44,7 @@ export interface LandingPageTheme {
 }
 
 export interface HeroSection {
-  eyebrow: string;
+  label: string;
   title: string;
   description: string;
   primaryAction: LandingPageAction;
@@ -80,7 +80,7 @@ export interface PricingTier {
 }
 
 export interface DemoSection {
-  eyebrow: string;
+  label: string;
   title: string;
   description: string;
   frameUrl: string;
@@ -88,7 +88,7 @@ export interface DemoSection {
 }
 
 export interface ContactSection {
-  eyebrow: string;
+  label: string;
   title: string;
   description: string;
   form: {
@@ -117,30 +117,35 @@ export interface FooterConfig {
   tagline: string;
 }
 
+/** Turn optional page areas on or off in a product preset. */
+export type LandingPageSection = 'features' | 'steps' | 'pricing' | 'callToAction' | 'demo' | 'contact';
+
 export interface LandingPageConfig {
   brand: BrandProfile;
   theme: LandingPageTheme;
+  /** Sections default to visible. Set a value to false to hide that area. */
+  showSections: Partial<Record<LandingPageSection, boolean>>;
   navigation: LandingPageLink[];
   hero: HeroSection;
   features: {
-    eyebrow: string;
+    label: string;
     title: string;
     description: string;
     items: FeatureCard[];
   };
-  process: {
-    eyebrow: string;
+  steps: {
+    label: string;
     title: string;
     items: ProcessStep[];
   };
   pricing: {
-    eyebrow: string;
+    label: string;
     title: string;
     description: string;
     tiers: PricingTier[];
   };
-  cta: {
-    eyebrow: string;
+  callToAction: {
+    label: string;
     title: string;
     description: string;
     action: LandingPageAction;
@@ -152,7 +157,8 @@ export interface LandingPageConfig {
 
 type OptionalBrandFields = 'id' | 'copyrightYear';
 
-export type LandingPageFactoryInput = Omit<LandingPageConfig, 'brand' | 'theme'> & {
+export type LandingPageFactoryInput = Omit<LandingPageConfig, 'brand' | 'theme' | 'showSections'> & {
   brand: Omit<BrandProfile, OptionalBrandFields> & Partial<Pick<BrandProfile, OptionalBrandFields>>;
   theme?: Partial<LandingPageTheme>;
+  showSections?: Partial<Record<LandingPageSection, boolean>>;
 };

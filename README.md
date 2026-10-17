@@ -20,13 +20,36 @@ For the active portfolio's design tokens, low-coupling theme factory pattern, an
 
 ## Create another product landing page
 
+### Quick edits for a client
+
+For a normal client update, open only that client's file in `src/content/` (for example, `src/content/pockraft.ts`). Change the words between quotes, prices, URLs, and image paths. The field names describe what appears on the page; leave the field names and punctuation in place. No layout or component edits are needed for content changes.
+
+To show or hide sections, edit the `showSections` block near the top of the preset:
+
+```ts
+showSections: {
+  features: true,
+  steps: true,
+  pricing: false,
+  callToAction: true,
+  demo: false,
+  contact: false,
+},
+```
+
+All sections are visible by default. Set a value to `false` to hide it. The home page switches are `features`, `steps`, `pricing`, and `callToAction`. `demo` controls the `/demo` page, and `contact` controls its contact form. Update the `navigation` links too if you hide a section they point to.
+
+To change colors, edit the `theme` values in that same preset. Use a leading `#` for hex colors, such as `'#172554'`.
+
+### Add a separate client
+
 1. Copy the existing preset:
 
    ```bash
    cp src/content/pockraft.ts src/content/acme.ts
    ```
 
-2. In `src/content/acme.ts`, rename the export and replace the content:
+2. In `src/content/acme.ts`, rename the export and replace the client information. Keep the provided example as a reference for the required fields:
 
    ```ts
    import { createLandingPage } from '../factories/createLandingPage';
@@ -45,7 +68,7 @@ For the active portfolio's design tokens, low-coupling theme factory pattern, an
        border: '#bfdbfe',
        radius: '1rem',
      },
-     // navigation, hero, features, process, pricing, cta,
+     // navigation, hero, features, steps, pricing, callToAction,
      // demo, contact, and footer follow the Pockraft preset shape.
    });
    ```
@@ -97,9 +120,12 @@ src/
   data/                Active preset selection
   factories/           Config factory and icon registry
   layouts/             Shared page shell and theme application
-  pages/               Config-driven landing and demo pages
+  pages/               Page composition
+    sections/          One independent component per landing-page section
   types/               Factory input and normalized config contracts
 ```
+
+The client workflow is: edit a preset in `src/content/`, register it in `src/content/index.ts`, then select it with `VITE_LANDING_PAGE_ID`. Shared layouts and section components are for design or behavior changes that should apply across clients.
 
 ## Development
 

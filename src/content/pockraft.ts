@@ -10,13 +10,21 @@ export const pockraftLandingPage = createLandingPage({
     metaDescription:
       'Pockraft is a polished, reusable React landing page template for presenting and launching products.',
   },
+  showSections: {
+    features: true,
+    steps: true,
+    pricing: true,
+    callToAction: true,
+    demo: true,
+    contact: true,
+  },
   navigation: [
     { label: 'About', href: '/#about' },
     { label: 'How it works', href: '/#how-it-works' },
     { label: 'Pricing', href: '/#pricing' },
   ],
   hero: {
-    eyebrow: 'Pockraft - commercial landing page template',
+    label: 'Pockraft - commercial landing page template',
     title: 'A clear promise that makes your project easy to understand.',
     description:
       'Use one or two sentences to explain who this project is for, what problem it solves, and why the solution is worth trying.',
@@ -29,7 +37,7 @@ export const pockraftLandingPage = createLandingPage({
     ],
   },
   features: {
-    eyebrow: 'Why this project',
+    label: 'Why this project',
     title: 'Show people why your idea matters.',
     description:
       'Use these cards for the three strongest reasons someone should understand, trust, or try your project.',
@@ -51,8 +59,8 @@ export const pockraftLandingPage = createLandingPage({
       },
     ],
   },
-  process: {
-    eyebrow: 'How it works',
+  steps: {
+    label: 'How it works',
     title: 'Make the journey feel obvious.',
     items: [
       {
@@ -76,7 +84,7 @@ export const pockraftLandingPage = createLandingPage({
     ],
   },
   pricing: {
-    eyebrow: 'Simple pricing',
+    label: 'Simple pricing',
     title: 'Choose the plan that fits your needs.',
     description: 'Start with the free tier and upgrade as your project grows.',
     tiers: [
@@ -121,21 +129,21 @@ export const pockraftLandingPage = createLandingPage({
       },
     ],
   },
-  cta: {
-    eyebrow: 'Ready when you are',
+  callToAction: {
+    label: 'Ready when you are',
     title: 'Give the project a clear next step.',
     description: 'Close the pitch with one action: open the demo, join the waitlist, start a trial, or contact the team.',
     action: { label: 'Launch the project', href: '/demo', variant: 'inverse' },
   },
   demo: {
-    eyebrow: 'Project demo',
+    label: 'Project demo',
     title: 'Show the product, not another paragraph.',
     description: 'Use this route for a live product, interactive prototype, walkthrough video, or focused proof of concept.',
     frameUrl: 'your-project-demo.com',
     frameNote: 'Embed your project demo or video here',
   },
   contact: {
-    eyebrow: 'Contact the team',
+    label: 'Contact the team',
     title: 'Interested in the project?',
     description: 'Use this section for feedback, early access requests, partnerships, or questions after the pitch.',
     form: {

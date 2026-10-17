@@ -43,6 +43,15 @@ export function createLandingPage(input: LandingPageFactoryInput): LandingPageCo
       ...defaultTheme,
       ...input.theme,
     },
+    showSections: {
+      features: true,
+      steps: true,
+      pricing: true,
+      callToAction: true,
+      demo: true,
+      contact: true,
+      ...input.showSections,
+    },
   });
 
   if (!config.brand.id) {

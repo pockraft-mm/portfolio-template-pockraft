@@ -25,7 +25,7 @@ export default function App({ config }: { config: LandingPageConfig }) {
     return () => window.removeEventListener('popstate', handleRouteChange);
   }, []);
 
-  const page = pathname === '/demo' ? <DemoPage /> : <LandingPage />;
+  const page = pathname === '/demo' && config.showSections.demo ? <DemoPage /> : <LandingPage />;
 
   return (
     <LandingPageProvider config={config}>
